@@ -26,14 +26,6 @@ RUN git clone https://github.com/voxbox-io/sipdump
 # 2- COMPILE SIPDUMP
 WORKDIR sipdump
 RUN cc pcapsipdump.cpp calltable.cpp -lpcap -lstdc++ -o pcapsipdump
-
-# 3- CONFIGURE SIPDUMP
-RUN cp pcapsipdump /usr/bin
-RUN mkdir ${HOME}
-
-COPY sysv/init /etc/init.d/sipdump
-RUN chmod +x /etc/init.d/sipdump
-RUN update-rc.d -f sipdump defaults
       
-# Start the container.    
-CMD /usr/bin/pcapsipdump -f -U -R none -p -i ${DEVICE} -d ${HOME}
+# 3- RUN SIPDUMP    
+CMD /usr/bin/pcapsipdump -f -U -R none -p -i ${DEVICE} -d sipdump-data
