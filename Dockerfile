@@ -24,4 +24,5 @@ RUN cc pcapsipdump.cpp calltable.cpp -lpcap -lstdc++ -o ${APP}
 RUN ln -s /usr/src/${APP}/${APP} /usr/bin/${APP}
 
 # 3- RUN SIPDUMP    
+# docker run -d --privileged -v <VOLUME>:/var/log/sipdump --name sipdump voxbox-sipdump
 CMD /usr/bin/${APP} -f -U -R none -p -i ${DEVICE} -d /var/log/${APP}
