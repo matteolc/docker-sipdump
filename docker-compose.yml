@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  sipdump:
+    image: voxbox/sipdump
+    volumes:
+      - sipdump-data:/var/log/sipdump  
+    environment:
+      DEV: eth0
+    deploy:
+      restart_policy:
+        condition: on-failure    
+    networks:
+      - sipdump
+networks:
+  sipdump: 
+volumes:
+  sipdump-data:         
