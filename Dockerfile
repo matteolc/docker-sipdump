@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER Matteo La Cognata <matteo@voxbox.io>
+LABEL maintainer="matteo@voxbox.io"
 
 ENV GIT_SSL_NO_VERIFY=1
 ENV APP sipdump
